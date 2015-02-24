@@ -51,7 +51,7 @@ function expect(expectation) {
 //Human
 function Human(spec){
   var spec = spec || {};
-  this.isCool = spec.isCool || true;
+  this.isCool = String(spec.isCool) == "true" || (spec.isCool === undefined) ? true : false;
   this.mood = spec.mood || "ok";
 
   this.pet = function(pet){
@@ -121,6 +121,7 @@ it("should expect sally to be cool by default and calvin as defined to not", fun
   expect(calvin.isCool).tobe(false);
   expect(sally.isCool).tobe(true);
   console.log(sally);
+  console.log(calvin);
 });
 
 it("should not affect snips' owner if calvin becomes teddy's owner", function() {
